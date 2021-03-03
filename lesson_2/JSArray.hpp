@@ -15,7 +15,7 @@ public:
     JSArray(const Hash& hash = Hash()) : m_hashFun(hash), m_type(structType::vector){
 
     };
-    void addElement(size_t index, T value)
+    void addElement(const size_t &index, const T &value)
     {
         if (m_type == structType::vector && m_NeedHashTable(index))
         {
@@ -36,7 +36,7 @@ public:
     };
 
 private:
-    const Hash m_hashFun;
+    Hash m_hashFun;
     std::unordered_map<int, T, Hash> *m_hashTable;
     std::vector<T> m_vector;
     
@@ -79,7 +79,7 @@ private:
         }
     };
 
-    void m_addVectorElement (size_t index, T value) {
+    void m_addVectorElement (const size_t &index, const T &value) {
         if (index > m_size) {
             m_vector.resize(index);
         }
@@ -87,7 +87,7 @@ private:
         m_size = index;
     };
 
-    void m_addHashElement (size_t index, T value) {
+    void m_addHashElement (const size_t &index, const T &value) {
         m_hashTable->emplace(index, value);
         m_size++;
     }
