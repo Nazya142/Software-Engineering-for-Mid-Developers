@@ -50,7 +50,6 @@ private:
     bool m_NeedHashTable(size_t index)
     {
         size_t gap = index - m_size;
-
         return (gap < MIN_GAP) ? false : gap > (m_size / 2);
     };
 
@@ -60,7 +59,6 @@ private:
         for (size_t i = 0; i < m_vector.size(); ++i) {
             m_hashTable->emplace(i, m_vector[i]);
         }
-
         m_vector.clear();
         m_type = structType::hash;
     };
