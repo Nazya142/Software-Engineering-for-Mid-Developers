@@ -35,6 +35,11 @@ public:
         }
     };
 
+    ~JSArray(){
+        if (m_type == structType::hash)
+            delete m_hashTable;
+    }
+
 private:
     Hash m_hashFun;
     std::unordered_map<int, T, Hash> *m_hashTable;
